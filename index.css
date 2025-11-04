@@ -58,18 +58,53 @@ input[type="password"],input[type="password"]:focus {
 }
 
 /*2nd Phase - Valley*/
+#secret {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  padding: 1vh 2vh;
+  font-size: 3vh;
+  font-family: 'Stardew Valley', monospace;
+  color: #4d0206;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0%;
+}
 
-#valleymain {
+.valleymain {
   position: fixed;
   min-width: 100%;
   min-height: 100%;
   width: auto;
   height: auto;  
   background: linear-gradient(180deg,rgba(7, 26, 54, 1) 0%, rgba(55, 140, 103, 1) 32%, rgba(52, 69, 141, 1) 67%);
+  overflow: hidden;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
-#mountain-shd {
+.valleymain-sunset {
   position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;  
+  background: linear-gradient(180deg,rgba(0, 106, 148, 1) 1%, rgba(117, 127, 150, 1) 6%, rgba(245, 101, 12, 1) 38%, rgba(255, 232, 25, 1) 55%);
+  overflow: hidden;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.mountain-shd {
+  position: absolute;
   max-width: 100%;
   max-height: 100%;
   min-width: 100%;
@@ -79,6 +114,27 @@ input[type="password"],input[type="password"]:focus {
   filter: brightness(100%) sepia(42%) hue-rotate(176deg) saturate(847%);
   image-rendering: pixelated;
   object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.mountain-shd-sunset {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  mix-blend-mode: overlay;
+  z-index: 0;
+  filter: brightness(100%) sepia(60%) hue-rotate(28deg) saturate(847%);
+  image-rendering: pixelated;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
 #mountain-img {
@@ -86,9 +142,24 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   image-rendering: pixelated;
   object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
-#mountain-lod3 {
+#ocean-img {
+  min-width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+#mountain-lod1 {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -97,7 +168,7 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   overflow: hidden;
   bottom: 0;
-  z-index: -3;
+  z-index: 1;
 }
 
 #mountain-lod2 {
@@ -109,10 +180,39 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   overflow: hidden;
   bottom: 0;
-  z-index: -2;
+  z-index: 2;
 }
 
-#stars {
+#mountain-lod3 {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  bottom: 0;
+  z-index: 0;
+}
+
+#mountain-lod0 {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  bottom: 0;
+  z-index: -1;
+  filter: brightness(60%) sepia(10%) hue-rotate(14deg) saturate(410%) contrast(4.5);
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.stars {
   position: absolute;
   content: '';
   z-index: -10;
@@ -120,10 +220,23 @@ input[type="password"],input[type="password"]:focus {
   height: 70vh;
   background-size: 160vh;
   background-image: url(img/stars.png);
-  background-repeat: repeat-x;
   animation: glowLoop 1s linear;
   animation-iteration-count: infinite;
   image-rendering: pixelated;
+}
+
+.stars-sunset {
+  position: absolute;
+  content: '';
+  z-index: -10;
+  width: 100%;
+  height: 70vh;
+  background-size: 160vh;
+  background-image: url(img/stars.png);
+  animation: glowLoop 1s linear;
+  animation-iteration-count: infinite;
+  image-rendering: pixelated;
+  opacity: 50%;
 }
 
 #tree-fog {
@@ -134,9 +247,10 @@ input[type="password"],input[type="password"]:focus {
   width: 100%;
   height: auto;
   overflow: hidden;
-  bottom: 0;
+  bottom: -10%;
   background-repeat: no-repeat;
   image-rendering: pixelated;
+  z-index: 3;
 }
 
 #tree-fog-img {
@@ -144,15 +258,20 @@ input[type="password"],input[type="password"]:focus {
   min-width: 100%;
   height: auto;
   object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
 .tree {
-  z-index: -1;
+  z-index: 3;
 }
 
 .fog {
   position: fixed;
-  z-index: 0;
+  opacity: 60%;
+  z-index: 4;
 }
 
 #clouds {
@@ -170,19 +289,57 @@ input[type="password"],input[type="password"]:focus {
   image-rendering: pixelated;
 }
 
-#moon {
-  position: absolute;
-  content: '';
-  z-index: 0;
+.moon {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   width: 100%;
-  height: 162vh;
-  background-size: 20vh;
-  top: 10vh;
-  left: 80vw;
-  background-image: url(img/moon.png);
+  height: auto;
+  top: 20%;
+  right: 14%;
   background-repeat: no-repeat;
+  image-rendering: pixelated;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.sunset {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  top: 40%;
+  right: 13%;
+  z-index: -2;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.moon-img {
+  max-width: 10%;
+  min-width: 10%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
   animation: glowLoop 5s linear;
   animation-iteration-count: infinite;
+}
+
+.sun-img {
+  max-width: 10%;
+  min-width: 10%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
 }
 
 #cliff {
@@ -196,23 +353,60 @@ input[type="password"],input[type="password"]:focus {
   bottom: 0;
   background-repeat: no-repeat;
   image-rendering: pixelated;
+  z-index: 4;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
-#cliff-img {
+.cliff-img {
   max-width: 40%;
   min-width: 40%;
   height: auto;
   image-rendering: pixelated;
   object-fit: contain;
   filter: brightness(80%) sepia(20%) hue-rotate(176deg) saturate(200%);
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+}
+
+.cliff-img-sunset {
+  max-width: 40%;
+  min-width: 40%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
 }
 
 #avatars {
   position: absolute;
-  content: '';
-  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: auto;
+  overflow: hidden;
+  bottom: 20%;
+  left: -1%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  z-index: 8;
+  mix-blend-mode: hard-light;
+}
+
+#avatar-img {
+  max-width: 5%;
+  min-width: 5%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
 }
 
 #dialogE {
@@ -224,9 +418,8 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   overflow: hidden;
   bottom: 0;
-  z-index: 2;
+  z-index: 10;
   image-rendering: pixelated;
-  animation: dialogEnter 0.2s ease-in;
   opacity: 0;
 }
 
@@ -239,9 +432,9 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   overflow: hidden;
   bottom: 0;
-  z-index: 3;
+  z-index: 10;
   image-rendering: pixelated;
-  animation: dialogEnter 0.2s ease-in;
+  opacity: 0;
 }
 
 #dialog-img {
@@ -250,7 +443,23 @@ input[type="password"],input[type="password"]:focus {
   height: auto;
   image-rendering: pixelated;
   object-fit: contain;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
 }
+
+.d-text {
+  position: absolute;
+  color: #4d0206;
+  font-family: 'Stardew Valley', monospace;
+  font-size: 2vw;
+  text-align: left;
+  width: 50%;
+  top: 0;
+  padding: 2%;
+  padding-right: 22%;
+}
+
 /* animations */
 
 @keyframes fadeInColor {
@@ -298,6 +507,15 @@ input[type="password"],input[type="password"]:focus {
   }
   to {
     transform: scale(1);
+  }
+}
+
+@keyframes dialogExit {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
   }
 }
 

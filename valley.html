@@ -23,32 +23,51 @@
     </head>
     <script defer src="./main.js"></script>
     <body>
-        <div id="valleymain">
-            <div class="dialog" id="dialogS">
+        <button onclick="sunsetTransition()" data-value=0 id="secret">CLICK HERE!</button>
+        <div id="valleymain" class="valleymain">
+            <div onclick="handleClick()" data-value=1 class="dialog" id="dialogS">
+                <a class="d-text" id="sai_1">Awhh, ang peaceful dito... I like it</a>
+                <a class="d-text" id="sai_2">Ganda pa ng view :3</a>
+                <a class="d-text" id="sai_3">I love you moreerr</a>
+                <a class="d-text" id="sai_4">Happy 18th birthday baby, I hope you like this birthday gift from me... hehe, I am more than happy to spend more years with you</a>
                 <img id="dialog-img" src="./img/dialogboxS.png">
             </div>
-            <div class="dialog" id="dialogE">
+            <div onclick="handleClick()" data-value=1 class="dialog" id="dialogE">
+                <a class="d-text" id="eli_1">Kaya nga ehhh, I love ittt</a>
+                <a class="d-text" id="eli_2">I love youuuu</a>
+                <a class="d-text" id="eli_3">miss ko na si soely, hehe</a>
                 <img id="dialog-img" src="./img/dialogboxE.png">
             </div>
-            <div id="clouds"></div>
-            <div id="avatars"></div>
-            <div id="moon"></div>
             <div id="cliff">
-                <img id="cliff-img" src="./img/cliff.png" alt="cliff">
+                <div id="avatars">
+                    <img id="avatar-img" src="./img/us.png">
+                </div>
+                <img id="cliff-img" class="cliff-img" src="./img/cliff.png" alt="cliff">
+            </div>
+            <div id="mountain-lod0">
+                <img id="ocean-img" src="./img/m4.png">
+            </div>
+            <div id="mountain-lod1">
+                <img id="mountain-shd1" class="mountain-shd" src="./img/m1.png">
+                <img id="mountain-img" src="./img/m1.png">
             </div>
             <div id="mountain-lod2">
-                <img id="mountain-shd" src="./img/m1.png" alt="mountain-lod2">
-                <img id="mountain-img" src="./img/m1.png" alt="mountain-lod2">
+                <img id="mountain-shd2" class="mountain-shd" src="./img/m2.png">
+                <img id="mountain-img" src="./img/m2.png">
             </div>
             <div id="mountain-lod3">
-                <img id="mountain-shd" src="./img/m2.png" alt="mountain-lod3">
-                <img id="mountain-img" src="./img/m2.png" alt="mountain-lod3">
+                <img id="mountain-shd3" class="mountain-shd" src="./img/m3.png">
+                <img id="mountain-img" src="./img/m3.png">
             </div>
             <div id="tree-fog">
                 <img class="tree" id="tree-fog-img" src="./img/trees.png">
                 <img class="fog" id="tree-fog-img" src="./img/fog.png">
             </div>
-            <div id="stars"></div>
+            <div id="clouds"></div>
+            <div id="moon" class="moon">
+                <img id="moon-img" class="moon-img" src="./img/moon.png">
+            </div>
+            <div id="stars" class="stars"></div>
         </div>
     </body>
 </html>
