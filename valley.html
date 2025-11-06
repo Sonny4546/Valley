@@ -22,8 +22,8 @@
         <link rel="stylesheet" href="./index.css">
     </head>
     <script defer src="./main.js"></script>
-    <body>
-        <button onclick="sunsetTransition()" data-value=0 id="secret">CLICK HERE!</button>
+    <body data-value=0>
+        <button onclick="transition()" data-value=0 id="secret">CLICK HERE!</button>
         <div id="valleymain" class="valleymain">
             <div onclick="handleClick()" data-value=1 class="dialog" id="dialogS">
                 <a class="d-text" id="sai_1">Awhh, ang peaceful dito... I like it</a>
@@ -44,7 +44,7 @@
                 </div>
                 <img id="cliff-img" class="cliff-img" src="./img/cliff.png" alt="cliff">
             </div>
-            <div id="mountain-lod0">
+            <div id="mountain-lod0" class="mountain-lod0">
                 <img id="ocean-img" src="./img/m4.png">
             </div>
             <div id="mountain-lod1">

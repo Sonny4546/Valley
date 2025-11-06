@@ -19,6 +19,7 @@ var moon_img = document.getElementById("moon-img");
 var stars = document.getElementById("stars");
 var moonwrap = document.getElementById("moon");
 var cliff_img = document.getElementById("cliff-img");
+var mtn_lod0 = document.getElementById("mountain-lod0");
 var mtn_shd1 = document.getElementById("mountain-shd1");
 var mtn_shd2 = document.getElementById("mountain-shd2");
 var mtn_shd3 = document.getElementById("mountain-shd3");
@@ -166,8 +167,9 @@ function handleClick() {
     console.log(dialogS.getAttribute("data-value"));
 }
 
-function sunsetTransition() {
+function transition() {
     console.log('Button clicked!');
+    bg_count = parseInt(body.getAttribute("data-value"));
     count = parseInt(btn.getAttribute("data-value"));
     switch(count) {
         case 1:
@@ -187,17 +189,56 @@ function sunsetTransition() {
             btn.setAttribute("data-value", 5);
             break;
         case 5:
-            valleymain.className = "valleymain-sunset";
-            moon_img.className = "sun-img";
-            stars.className = "stars-sunset";
-            moon_img.src = "./img/sun.png";
-            moonwrap.className = "sunset";
-            cliff_img.className = "cliff-img-sunset";
-            mtn_shd1.className = "mountain-shd-sunset";
-            mtn_shd2.className = "mountain-shd-sunset";
-            mtn_shd3.className = "mountain-shd-sunset";
             btn.setAttribute("data-value", 6);
-            btn.style.opacity = "0";
+            switch(bg_count) {
+                case 1:
+                    valleymain.className = "valleymain-daytime";
+                    moon_img.className = "sun-img";
+                    stars.className = "stars-daytime";
+                    moon_img.src = "./img/sun.png";
+                    moonwrap.className = "daytime";
+                    cliff_img.className = "cliff-img-daytime";
+                    mtn_lod0.className = "mountain-lod0-daytime";
+                    mtn_shd1.className = "mountain-shd-daytime";
+                    mtn_shd2.className = "mountain-shd-daytime";
+                    mtn_shd3.className = "mountain-shd-daytime";
+                    btn.setAttribute("data-value", 6);
+                    btn.style.opacity = "0";
+                    body.setAttribute("data-value", 2);
+                    console.log("daytime");
+                    break;
+                case 2:
+                    valleymain.className = "valleymain";
+                    moon_img.className = "moon-img";
+                    stars.className = "stars";
+                    moon_img.src = "./img/moon.png";
+                    moonwrap.className = "moon";
+                    cliff_img.className = "cliff-img";
+                    mtn_lod0.className = "mountain-lod0";
+                    mtn_shd1.className = "mountain-shd";
+                    mtn_shd2.className = "mountain-shd";
+                    mtn_shd3.className = "mountain-shd";
+                    btn.setAttribute("data-value", 6);
+                    btn.style.opacity = "0";
+                    body.setAttribute("data-value", 3);
+                    console.log("nighttime");
+                    break;
+                
+                default:
+                    valleymain.className = "valleymain-sunset";
+                    moon_img.className = "sun-img";
+                    stars.className = "stars-sunset";
+                    moon_img.src = "./img/sun.png";
+                    moonwrap.className = "sunset";
+                    cliff_img.className = "cliff-img-sunset";
+                    mtn_shd1.className = "mountain-shd-sunset";
+                    mtn_shd2.className = "mountain-shd-sunset";
+                    mtn_shd3.className = "mountain-shd-sunset";
+                    btn.setAttribute("data-value", 6);
+                    btn.style.opacity = "0";
+                    body.setAttribute("data-value", 1);
+                    console.log("sunset");
+            }
             break;
         default:
             btn.setAttribute("data-value", 1);
