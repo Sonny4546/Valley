@@ -40,7 +40,7 @@ passInput.addEventListener("keypress", function(event) {
         if (originalValue === "11/12/07") {
             body.style.animation = "fadeInColor 0.5s ease-in-out forwards";
             maindiv.style.animation = "fadeOut 0.25s ease-in-out forwards";
-            window.location.replace("/valley.html");
+            window.location.replace("Valley/valley.html");
         } else {
             keypress += 1;
             if (keypress == 5) {
