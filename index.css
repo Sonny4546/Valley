@@ -377,6 +377,24 @@ input[type="password"],input[type="password"]:focus {
   z-index: -2;
 }
 
+.moon-dog {
+  position: fixed;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  top: 20%;
+  right: 14%;
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -ms-user-drag: none;
+  user-select: none;
+  z-index: 1000;
+}
+
 .sunset {
   position: fixed;
   display: flex;
@@ -421,6 +439,17 @@ input[type="password"],input[type="password"]:focus {
   object-fit: contain;
   animation: glowLoop 5s linear;
   animation-iteration-count: infinite;
+}
+
+.moon-img-dog {
+  max-width: 10%;
+  min-width: 10%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  animation: glowLoop 5s linear;
+  animation-iteration-count: infinite;
+  opacity: 0;
 }
 
 .sun-img {
@@ -562,6 +591,164 @@ input[type="password"],input[type="password"]:focus {
   padding-right: 22%;
 }
 
+/*Pepper CSS*/
+
+#clouds-p {
+  position: absolute;
+  content: '';
+  z-index: 1;
+  width: 100%;
+  height: 500vh;
+  background-size: 300vh;
+  top: -230vh;
+  background-image: url(img/clouds.png);
+  background-repeat: repeat-x;
+  animation: cloudLoop 60s linear;
+  animation-iteration-count: infinite;
+  image-rendering: pixelated;
+}
+
+.stars-p {
+  position: absolute;
+  content: '';
+  z-index: -10;
+  width: 100%;
+  height: 100vh;
+  background-size: 120vh;
+  top: 0;
+  background-image: url(img/stars.png);
+  animation: glowLoop 1s linear;
+  animation-iteration-count: infinite;
+  image-rendering: pixelated;
+}
+
+.dog-p {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    left: 70%;
+    top: 58%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+    z-index: -2;
+}
+
+.dog-atk {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    left: 70%;
+    top: 58%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+    z-index: 0;
+}
+
+.dog-img {
+  max-width: 50%;
+  min-width: 50%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  animation: glowLoop 30s linear;
+  animation-iteration-count: infinite;
+  z-index: -3;
+}
+
+.dog-atk-img {
+  max-width: 50%;
+  min-width: 50%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  animation: glowLoop 30s linear;
+  animation-iteration-count: infinite;
+  z-index: 0;
+}
+
+#dog-img-interact {
+  max-width: 50%;
+  min-width: 50%;
+  height: auto;
+  image-rendering: pixelated;
+  object-fit: contain;
+  animation: glowLoop 30s linear;
+  animation-iteration-count: infinite;
+  z-index: 100;
+  opacity: 0%;
+}
+
+#dog-interact {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+    left: 70%;
+    top: 58%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+    z-index: 100;
+    cursor: pointer;
+}
+
+.score-count {
+  position: absolute;
+  color: #e2f4ff;
+  font-family: 'Stardew Valley', monospace;
+  font-size: 20vw;
+  text-align: left;
+  padding: 2vw;
+}
+
+#lose-screen {
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0%;
+  z-index: 1;
+}
+
+#lose-text {
+  position: absolute;
+  color: #b80808;
+  font-family: 'Stardew Valley', monospace;
+  font-size: 20vw;
+  text-align: center;
+  padding: 2vw;
+  padding-top: 55vh;
+}
+
+#score-max {
+  padding-top: 30vh;
+}
+
 /* animations */
 
 @keyframes fadeInColor {
@@ -579,6 +766,15 @@ input[type="password"],input[type="password"]:focus {
   }
   to {
     opacity: 0%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
   }
 }
 
@@ -621,10 +817,77 @@ input[type="password"],input[type="password"]:focus {
   }
 }
 
+@keyframes jump {
+  from {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  to {
+    transform: translate(313%, -153%) scale(10);
+  }
+}
+
 /*media queries*/
 
-@media only screen and (min-width: 1920px) {
-  
+@media screen and (max-width: 425px) {
+  .dog-p {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 300vw;
+    height: auto;
+    left: 95%;
+    top: 60%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dog-p {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 250vw;
+    height: auto;
+    left: 95%;
+    top: 60%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+  }
+
+  .dog-atk {
+    position: absolute;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 110vw;
+    height: auto;
+    left: 100%;
+    top: 20%;
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    transform: translate(-50%, -50%) scale(0);
+    background-repeat: no-repeat;
+    image-rendering: pixelated;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
+    z-index: 0;
+  }
 }
 
 /*FONTS*/

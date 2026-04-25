@@ -18,6 +18,14 @@ var btn = document.getElementById("secret");
 var moon_img = document.getElementById("moon-img");
 var stars = document.getElementById("stars");
 var moonwrap = document.getElementById("moon");
+var moon_dog = document.getElementById("moon-dog");
+var moon_img_dog = document.getElementById("moon-img-dog");
+var dog_interact = document.getElementById("dog-interact");
+var dog_img = document.getElementById("dog-img");
+var dog_atk = document.getElementById("dog-atk");
+var lose_scr = document.getElementById("lose-screen");
+var score = document.getElementById("score");
+var score_max = document.getElementById("score-max");
 var cliff_img = document.getElementById("cliff-img");
 var mtn_lod0 = document.getElementById("mountain-lod0");
 var mtn_shd1 = document.getElementById("mountain-shd1");
@@ -243,4 +251,68 @@ function transition() {
             break;
     }
     console.log(btn.getAttribute("data-value"));
+}
+
+function handleMoonClick() {
+    console.log('Moon clicked!');
+    moon_count = parseInt(moon_dog.getAttribute("data-value"));
+    switch(moon_count) {
+        case 1:
+            moon_dog.setAttribute("data-value", moon_count + 1);
+            moon_img_dog.style.opacity = "100%";
+            break;
+        default:
+            moon_dog.setAttribute("data-value", 1);
+            window.location.replace("https://sonny4546.github.io/Valley/pepper.html");
+            break;
+    }
+}
+
+function getRandomInt(min, max) {
+  // Returns a random integer between min (inclusive) and max (inclusive)
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function handleDogInteract() {
+    console.log('Dog clicked!');
+    dog_interact.setAttribute("data-score", parseInt(dog_interact.getAttribute("data-score")) + 1);
+    interact_count = parseInt(dog_interact.getAttribute("data-score"));
+    score.textContent = interact_count;
+    console.log(interact_count);
+    
+    max = 10 - Math.floor((interact_count / 10));
+    console.log(max);
+    random = getRandomInt(1,max);
+    randomTime = getRandomInt(1,5) * 1000;
+    if(random == max) {
+        new Audio('/sfx/siren.mp3').play();
+        dog_img.src = "./img/dog-warning.png";
+        dog_interact.onclick = handleDogInteract2;
+        const timerId = setTimeout(() => {
+            dog_interact.onclick = handleDogInteract;
+            dog_img.src = "./img/dog-stay.png";
+            clearTimeout(timerId);
+        }, randomTime); 
+    }
+}
+
+function handleDogInteract2() {
+    console.log('interact!');
+    dog_interact.setAttribute("data-score", parseInt(dog_interact.getAttribute("data-score")) + 1);
+    interact_count = parseInt(dog_interact.getAttribute("data-score"));
+    score.textContent = interact_count;
+    console.log(interact_count);
+    
+    random = getRandomInt(1,3);
+
+    if(random == 3) {
+        dog_interact.remove();
+        dog_atk.style.animation = "jump 1.0s ease-in forwards";
+        const timerId = setTimeout(() => {
+            lose_scr.style.animation = "fadeIn 0.5s ease-in forwards";
+            clearTimeout(timerId);
+        }, 1500); 
+        score_max.textContent = interact_count;
+        console.log('You Lose!');
+    }
 }
