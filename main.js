@@ -281,11 +281,14 @@ function handleDogInteract() {
     console.log(interact_count);
     
     max = 10 - Math.floor((interact_count / 10));
+    if(interact_count >= 100) {
+        max = 4 - Math.floor((interact_count / 100));
+    }
     console.log(max);
     random = getRandomInt(1,max);
     randomTime = getRandomInt(1,5) * 1000;
     if(random == max) {
-        new Audio('/sfx/siren.mp3').play();
+        new Audio('./sfx/siren.mp3').play();
         dog_img.src = "./img/dog-warning.png";
         dog_interact.onclick = handleDogInteract2;
         const timerId = setTimeout(() => {
@@ -306,6 +309,7 @@ function handleDogInteract2() {
     random = getRandomInt(1,3);
 
     if(random == 3) {
+        new Audio('./sfx/komodo-dragon.mp3').play();
         dog_interact.remove();
         dog_atk.style.animation = "jump 1.0s ease-in forwards";
         const timerId = setTimeout(() => {
